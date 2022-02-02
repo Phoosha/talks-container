@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
 
   const resizedImgStream = sharp(imageFile)
     .rotate()
-    .resize(width, height)
+    .resize(width, height, { fit: 'inside' })
     .jpeg({ mozjpeg: true });
 
   res.setHeader("Cache-Control", "no-cache, no-store");
