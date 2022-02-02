@@ -1,4 +1,4 @@
-FROM node:14.17.0-alpine3.11 as build
+FROM node:14.17.0-alpine3.11
 
 WORKDIR /opt/pickyapp
 

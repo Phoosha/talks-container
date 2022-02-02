@@ -10,7 +10,13 @@
 2. Start the application in this bad runtime environment
    ~~~sh
    yarn
-   yarn dev
+   yarn build
+   yarn start
    ~~~
 3. Connect to the application on http://localhost:8080
 4. Observe how the application crashes due to a segmentation fault
+5. Cleanup to avoid permission errors outside the container
+   ~~~sh
+   yarn clean
+   rm -rf node_modules
+   ~~~
