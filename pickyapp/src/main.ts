@@ -1,8 +1,29 @@
 import express from "express";
 import sharp from "sharp";
+import yargs from "yargs/yargs";
+import path from "path";
+
+const args = yargs(process.argv.slice(2))
+  .option("port", {
+    alias: "p",
+    default: 8080,
+    describe: "port to listen on",
+    type: "number",
+  })
+  .option("image", {
+    alias: "f",
+    default: "static/default.jpg",
+    describe: "path to an image to serve",
+    type: "string",
+    coerce: path.resolve,
+  })
+  .help()
+  .parseSync();
+
+const port = args.port;
+const imageFile = args.image;
 
 const app = express();
-const port = 8080; // default port to listen
 
 const useParamAsInt = (value: unknown, defaultValue: number) => {
   if (value == null) {
@@ -28,7 +49,7 @@ app.get("/", (req, res) => {
     return;
   }
 
-  const resizedImgStream = sharp("static/default.jpg")
+  const resizedImgStream = sharp(imageFile)
     .rotate()
     .resize(width, height)
     .jpeg({ mozjpeg: true });
