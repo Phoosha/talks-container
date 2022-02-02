@@ -9,6 +9,11 @@ about containers. It consists of:
     - [`03_advanced`](./03_advanced)
 
 
+## Prerequisites
+
+- Docker, e.g. [installed as Docker Desktop](https://docs.docker.com/desktop/windows/install/)
+
+
 ## Usage
 
 1. Take a look at the source code of the demo application, which essentially
